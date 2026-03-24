@@ -1,27 +1,6 @@
+import { Link } from 'react-router-dom'
+import { services } from '../data/services'
 import CallBanner from '../components/CallBanner'
-
-const services = [
-  {
-    title: 'Channel Letters',
-    desc: 'Illuminated dimensional letters that make your business impossible to miss — day or night. Front-lit, back-lit, or halo-lit options to match your brand perfectly.',
-    details: ['Individual letter fabrication', 'LED illumination', 'Front-lit, back-lit, and halo-lit', 'UL listed components', 'Permit coordination'],
-  },
-  {
-    title: 'Monument Signs',
-    desc: 'Freestanding ground-level signs built to last. The first thing customers see when they arrive. Designed to meet local codes while making a strong impression.',
-    details: ['Custom base design', 'Illuminated or non-illuminated', 'Multi-tenant configurations', 'Durable materials', 'Foundation and installation'],
-  },
-  {
-    title: 'Vinyl Graphics',
-    desc: 'Window displays, vehicle wraps, wall murals — precision-cut vinyl for any surface. High-quality materials that hold up to weather and UV exposure.',
-    details: ['Window graphics and lettering', 'Vehicle wraps and fleet graphics', 'Wall murals and displays', 'Floor graphics', 'Cut vinyl and printed vinyl'],
-  },
-  {
-    title: 'Custom Signage',
-    desc: 'From concept to installation. If you can imagine it, we can build it and light it up. We work with you from the first sketch through final install.',
-    details: ['Pylon and pole signs', 'Blade and projecting signs', 'Wayfinding and directional', 'ADA compliant signage', 'Design and engineering'],
-  },
-]
 
 export default function Services() {
   return (
@@ -41,37 +20,33 @@ export default function Services() {
 
       <div className="h-px bg-gray-200" />
 
-      {/* Service details */}
+      {/* Service list — clickable */}
       <section className="py-16 md:py-28 px-5">
         <div className="max-w-5xl mx-auto">
           {services.map((s, i) => (
-            <div
-              key={i}
-              className="border-t border-gray-200 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20"
+            <Link
+              key={s.slug}
+              to={`/services/${s.slug}`}
+              className="group border-t border-gray-200 py-12 md:py-20 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-20 items-start"
             >
               <div>
                 <span className="text-xs text-gray-400 font-medium tabular-nums block mb-3">
                   0{i + 1}
                 </span>
-                <h2 className="font-serif text-2xl md:text-4xl font-medium text-dark mb-4">
+                <h2 className="font-serif text-2xl md:text-4xl font-medium text-dark group-hover:text-brand transition-colors mb-4">
                   {s.title}
                 </h2>
-                <p className="text-gray-500 leading-relaxed text-sm md:text-base">
-                  {s.desc}
+                <p className="text-gray-500 leading-relaxed text-sm md:text-base max-w-xl">
+                  {s.heroDesc}
                 </p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand group-hover:text-brand-dark transition-colors uppercase tracking-wide">
+                  Learn More <span aria-hidden="true">&rarr;</span>
+                </span>
               </div>
-              <div className="md:pt-10">
-                <p className="text-xs font-medium uppercase tracking-widest text-gray-400 mb-4">Includes</p>
-                <ul className="space-y-3">
-                  {s.details.map((d, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
+              <div className="hidden md:flex items-center justify-center w-12 h-12 text-gray-300 group-hover:text-brand transition-colors text-2xl mt-8">
+                &rarr;
               </div>
-            </div>
+            </Link>
           ))}
           <div className="border-t border-gray-200" />
         </div>

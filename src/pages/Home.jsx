@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
+import { services } from '../data/services'
 import CallBanner from '../components/CallBanner'
 
 const phone = '708-386-1485'
-
-const services = [
-  { title: 'Channel Letters', desc: 'Illuminated dimensional letters for maximum visibility.' },
-  { title: 'Monument Signs', desc: 'Freestanding ground-level signs built to last.' },
-  { title: 'Vinyl Graphics', desc: 'Precision-cut vinyl for windows, vehicles, and walls.' },
-  { title: 'Custom Signage', desc: 'From concept to installation — anything you need.' },
-]
 
 export default function Home() {
   return (
@@ -46,7 +40,7 @@ export default function Home() {
 
       <div className="h-px bg-gray-200" />
 
-      {/* Services preview */}
+      {/* Services preview — clickable */}
       <section className="py-20 md:py-32 px-5">
         <div className="max-w-6xl mx-auto">
           <p className="text-xs sm:text-sm font-medium tracking-widest uppercase text-brand mb-3 md:mb-4">
@@ -58,8 +52,9 @@ export default function Home() {
 
           <div>
             {services.map((s, i) => (
-              <div
-                key={i}
+              <Link
+                key={s.slug}
+                to={`/services/${s.slug}`}
                 className="group border-t border-gray-200 py-8 md:py-14 flex flex-col md:flex-row md:items-start gap-3 md:gap-16"
               >
                 <span className="text-xs md:text-sm text-gray-400 font-medium tabular-nums md:w-16 shrink-0">
@@ -70,10 +65,13 @@ export default function Home() {
                     {s.title}
                   </h3>
                   <p className="mt-2 md:mt-3 text-gray-500 leading-relaxed max-w-xl text-sm md:text-lg">
-                    {s.desc}
+                    {s.shortDesc}
                   </p>
                 </div>
-              </div>
+                <span className="hidden md:block text-gray-300 group-hover:text-brand transition-colors text-lg mt-2" aria-hidden="true">
+                  &rarr;
+                </span>
+              </Link>
             ))}
             <div className="border-t border-gray-200" />
           </div>
