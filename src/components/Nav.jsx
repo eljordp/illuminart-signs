@@ -17,8 +17,8 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-        <Link to="/" className="font-serif text-xl font-semibold tracking-tight text-dark">
-          Illumin<span className="text-brand font-bold">Art</span>
+        <Link to="/" className="flex items-center">
+          <img src="/illuminart.png" alt="IlluminArt Signs" className="h-10 md:h-12 w-auto" />
         </Link>
 
         {/* Desktop links */}

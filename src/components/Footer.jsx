@@ -10,9 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           {/* Brand */}
           <div>
-            <p className="font-serif text-xl font-semibold tracking-tight mb-3">
-              Illumin<span className="text-brand font-bold">Art</span> Signs
-            </p>
+            <img src="/illuminart.png" alt="IlluminArt Signs" className="h-12 w-auto mb-3" />
             <p className="text-sm text-gray-500 leading-relaxed">
               Custom signage for businesses across <br className="hidden md:block" />
               the Sacramento Valley.
